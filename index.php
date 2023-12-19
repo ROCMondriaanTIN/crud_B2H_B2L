@@ -33,7 +33,7 @@ $bikes = $query->fetchAll(PDO::FETCH_ASSOC);
         <tr>
             <td><?= $bike['type']?></td>
             <td><?= $bike['prijs']?></td>
-            <td><?= $bike['categorie_id'] ?></td>
+            <td><?= $bike['merk'] ?></td>
         </tr>
     <?php endforeach;?>
     </tbody>
