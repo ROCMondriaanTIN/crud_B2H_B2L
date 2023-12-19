@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 20 nov 2023 om 08:28
+-- Gegenereerd op: 19 dec 2023 om 14:15
 -- Serverversie: 10.4.28-MariaDB
 -- PHP-versie: 8.2.4
 
@@ -54,30 +54,30 @@ INSERT INTO `categorie` (`id`, `naam`, `img`) VALUES
 DROP TABLE IF EXISTS `fietsen`;
 CREATE TABLE `fietsen` (
   `id` int(11) NOT NULL,
-  `merk` varchar(255) NOT NULL,
+  `merk` varchar(255) DEFAULT NULL,
   `type` varchar(255) NOT NULL,
   `prijs` decimal(7,2) NOT NULL,
-  `categorie_id` int(11) NOT NULL
+  `categorie_id` int(11) DEFAULT NULL,
+  `voorraad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `fietsen`
 --
 
-INSERT INTO `fietsen` (`id`, `merk`, `type`, `prijs`, `categorie_id`) VALUES
-(8, 'Batavus', 'Blockbuster', 699.99, 1),
-(9, 'Batavus', 'Flying D', 899.00, 1),
-(10, 'Gazelle', 'Giro', 899.00, 2),
-(11, 'Gazelle', 'Chamonix', 1049.00, 2),
-(12, 'Gazelle', 'Eclipse', 799.00, 2),
-(13, 'Giant', 'Competition', 999.00, 3),
-(14, 'Giant', 'Expedition AT', 1299.00, 3),
-(19, 'Gazelle', 'Esprit', 2700.99, 2),
-(21, 'Gazelle', 'Turbo', 1500.00, 2),
-(22, 'Gazelle', 'Turbo', 1500.00, 2),
-(23, 'Gazelle', 'Turbo', 1500.00, 2),
-(24, 'Gazelle', 'Turbo', 1500.00, 2),
-(25, 'Gazelle', 'Esprit', 1700.00, 2);
+INSERT INTO `fietsen` (`id`, `merk`, `type`, `prijs`, `categorie_id`, `voorraad`) VALUES
+(9, 'Batavus', 'Flying D', 899.00, 1, 10),
+(11, 'Gazelle', 'Chamonix', 1049.00, 2, 5),
+(12, 'Gazelle', 'Eclipse', 799.00, 2, 7),
+(13, 'Giant', 'Competition', 999.00, 3, 13),
+(14, 'Giant', 'Expedition AT', 1299.00, 3, 12),
+(19, 'Gazelle', 'Esprit', 2700.99, 2, 8),
+(21, 'Gazelle', 'Turbo', 1500.00, 2, 16),
+(22, 'Gazelle', 'Turbo', 1500.00, 2, 4),
+(25, 'Gazelle', 'Esprit', 1700.00, 2, 1),
+(27, 'Gazelle', 'X5', 1000.99, 1, 9),
+(29, 'Gazelle', 'turbo', 799.99, 2, 5),
+(30, 'Batavus', 'berini', 700.50, 2, 20);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -104,13 +104,13 @@ ALTER TABLE `fietsen`
 -- AUTO_INCREMENT voor een tabel `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT voor een tabel `fietsen`
 --
 ALTER TABLE `fietsen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

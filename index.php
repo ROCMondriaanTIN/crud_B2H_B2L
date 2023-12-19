@@ -18,12 +18,6 @@ $bikes = $query->fetchAll(PDO::FETCH_ASSOC);
     <title>Document</title>
 </head>
 <body>
-<?php
-if (isset($_SESSION['message'])){
-    echo $_SESSION['message'];
-    unset($_SESSION['message']);
-}
-?>
 <a href="insert.php">Toevoegen</a>
 <table>
     <thead>
@@ -31,8 +25,7 @@ if (isset($_SESSION['message'])){
         <th scope="col">type</th>
         <th scope="col">prijs</th>
         <th scope="col">categorie</th>
-        <th scope="col">update</th>
-        <th scope="col">delete</th>
+        <th scope="col">details</th>
     </tr>
     </thead>
     <tbody>
@@ -47,8 +40,6 @@ if (isset($_SESSION['message'])){
             <td><?= $bike['type']?></td>
             <td><?= $bike['prijs']?></td>
             <td><?= $category['naam'] ?></td>
-            <td><a href="update.php?id=<?= $bike['id']?>">Update</a></td>
-            <td><a href="delete.php?id=<?= $bike['id']?>">Delete</a></td>
         </tr>
     <?php endforeach;?>
     </tbody>

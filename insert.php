@@ -9,15 +9,14 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 if (isset($_POST['submit'])) {
     if (!empty($_POST['type']) && !empty($_POST['price']) && !empty($_POST['category'])) {
         $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
-        $category = filter_input(INPUT_POST, 'category', FILTER_VALIDATE_INT);
 
-        if (!$price || !$category) {
+        if (!$price) {
             $alert = "vul geldige getallen in";
         } else {
             $query = $db->prepare('INSERT INTO fietsen (type, prijs, categorie_id) VALUES (:type, :price, :category)');
             $query->bindParam('type', $_POST['type']);
             $query->bindParam('price', $price);
-            $query->bindParam('category', $category);
+            $query->bindParam('category', $_POST['category']);
             if ($query->execute()) {
                 header('location: index.php');
             } else {
@@ -47,11 +46,7 @@ if (isset($_POST['submit'])) {
     <label for="price">Prijs</label>
     <input type="number" name="price" id="price" step="0.01"><br>
     <label for="category">Categorie</label>
-    <select name="category" id="category">
-        <?php foreach ($categories as $category): ?>
-            <option value="<?= $category['id'] ?>"><?= $category['naam'] ?></option>
-        <?php endforeach; ?>
-    </select><br>
+    <input type="text" name="category" id="category">
     <button name="submit">verzenden</button>
 </form>
 <?= $alert ?>
