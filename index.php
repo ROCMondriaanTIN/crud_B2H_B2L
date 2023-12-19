@@ -30,16 +30,10 @@ $bikes = $query->fetchAll(PDO::FETCH_ASSOC);
     </thead>
     <tbody>
     <?php foreach ($bikes as $bike) :?>
-        <?php
-            $query = $db->prepare('SELECT naam FROM categorie WHERE id = :id');
-            $query->bindParam('id', $bike['categorie_id']);
-            $query->execute();
-            $category = $query->fetch(PDO::FETCH_ASSOC);
-        ?>
         <tr>
             <td><?= $bike['type']?></td>
             <td><?= $bike['prijs']?></td>
-            <td><?= $category['naam'] ?></td>
+            <td><?= $bike['categorie_id'] ?></td>
         </tr>
     <?php endforeach;?>
     </tbody>
